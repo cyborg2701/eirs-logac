@@ -16,9 +16,12 @@
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
+        "realrashid/sweet-alert": "^5.1",
         "symfony/http-client": "^6.1",
         "symfony/mailgun-mailer": "^6.1",
-        "symfony/postmark-mailer": "^6.1"
+        "symfony/postmark-mailer": "^6.1",
+        "synergitech/laravel-alert": "^2.0",
+        "yajra/laravel-datatables-oracle": "^10.1"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

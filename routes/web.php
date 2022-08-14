@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('is_user');
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('/about', function () {
+Route::middleware(['is_admin'])->group(function(){
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+Route::get('/admin/profile', 'ProfileController@index')->name('profile');
+Route::put('/admin/profile', 'ProfileController@update')->name('profile.update');
+Route::get('/admin/about', function () {
     return view('about');
 })->name('about');
+
+Route::resource('/admin/employees', EmployeeController::class);
+});
+
+Auth::routes();

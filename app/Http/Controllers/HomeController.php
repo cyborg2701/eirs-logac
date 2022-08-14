@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Models\User;
+use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,13 +27,21 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $users = User::count();
+        $employees = DB::table('employees')
+                        ->where('email', '=',  Auth::user()->email)
+                        ->get();
+        return view('/home', compact('employees'));
+    }
+    public function adminHome()
+    {
 
+        $employees = Employee::all()->count();
+
+        // $users = User::where('is_admin', '=', '0')->count();
         $widget = [
-            'users' => $users,
+            'employees' => $employees,
             //...
         ];
-
-        return view('home', compact('widget'));
+        return view('admin_home', compact('widget'));
     }
 }

@@ -17,7 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'last_name', 'email', 'password',
+        'name', 
+        'email', 
+        'password',
+        'is_admin'
     ];
 
     /**
@@ -43,14 +46,14 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getFullNameAttribute()
-    {
-        if (is_null($this->last_name)) {
-            return "{$this->name}";
-        }
+    // public function getFullNameAttribute()
+    // {
+    //     if (is_null($this->lastname)) {
+    //         return "{$this->firstname}";
+    //     }
 
-        return "{$this->name} {$this->last_name}";
-    }
+    //     return "{$this->firstname} {$this->middlename} {$this->lastname}";
+    // }
 
     /**
      * Set the user's password.
@@ -62,4 +65,13 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'profile_photo_url',
+    ];
+
 }
