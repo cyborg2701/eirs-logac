@@ -1,70 +1,68 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header text-muted">Employee Information</div>
-                <div class="card-body">
-                   @foreach($employees as $employee)
-                         {{-- NAME --}}
-                            <div class="row p-2">
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">Name</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->lastname }}, {{ $employee->firstname }} {{ $employee->middlename }}" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">Employee Number</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->empnumber }}" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">Position</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->position }}" readonly>
-                            </div>
-                        </div>      
-                        <div class="row p-2">
-                            <div class="col-md-3">
-                                <label for="formControlInput" class="form-label">TIN</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->tin }}" readonly>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="formControlInput" class="form-label">PAGIBIG</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->pagibig }}" readonly>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="formControlInput" class="form-label">PHILHEALTH</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->philhealth }}" readonly>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="formControlInput" class="form-label">GSIS</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->gsis }}" readonly>
-                            </div>
-                        </div> 
-                        <div class="row p-2">
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">ITEM NUMBER</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->itemnumber }}" readonly>
-                            </div>
-                            <div class="col-md-6">
-                                <label for="formControlInput" class="form-label">SUBJECTS</label>
-                                <textarea name="subjects" id="subjects" cols="30" rows="2" class="form-control" readonly>{{ $employee->subjects }}</textarea>
-                            </div>
+@section('main-content')
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-4 text-gray-800">{{ __('Dashboard') }}</h1>
+
+    @if (session('success'))
+    <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    @endif
+
+    @if (session('status'))
+        <div class="alert alert-success border-left-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+
+    <div class="row">
+
+        <!-- Content Column -->
+        <div class="col-lg-6 mb-4">
+
+
+            <!-- Color System -->
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                            Primary
+                            <div class="text-white-50 small">#4e73df</div>
                         </div>
-                        <div class="row p-2">
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">ADVISORY CLASS</label>
-                                <input type="email" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->advisory }}" readonly>
-                            </div>
-                            <div class="col-md-4">
-                                <label for="formControlInput" class="form-label">TEACHING LOADS</label>
-                                <input type="number" class="form-control" id="formControlInput" placeholder="name@example.com" value="{{ $employee->loads }}" readonly>
-                            </div>
-                        </div>        
-                   @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            Success
+                            <div class="text-white-50 small">#1cc88a</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-info text-white shadow">
+                        <div class="card-body">
+                            Info
+                            <div class="text-white-50 small">#36b9cc</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-warning text-white shadow">
+                        <div class="card-body">
+                            Warning
+                            <div class="text-white-50 small">#f6c23e</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
         </div>
+
     </div>
-</div>
 @endsection

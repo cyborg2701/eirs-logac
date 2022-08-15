@@ -24,7 +24,7 @@
   </table>
 <div>
 
-
+  {{-- add moda --}}
 
 <div class="modal fade" id="addModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
@@ -36,118 +36,137 @@
       <div class="modal-body">
         <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
           {{-- 1st row --}}
-          <div id="error"></div>
           <input type="hidden" name="id" id="id">
-          <div class="row p-1">
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Last Name</label>
-              <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Dela Cruz" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">First Name</label>
-              <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Pedro" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Middle Name</label>
-              <input type="text" class="form-control" name="middlename" id="middlename" placeholder="Dantes" required>
-            </div>
-          </div> 
-          {{-- end of 1st row --}}
-          {{-- 2nd row --}}
-          <div class="row p-1">
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Email</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="pedro@yahoo.com" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Employee Number</label>
-              <input type="text" class="form-control" name="empnumber" id="empnumber" placeholder="00212351" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Item Number</label>
-              <input type="text" class="form-control" name="itemnumber" id="itemnumber" placeholder="10023-20351" required>
-            </div>
+          <div class="row">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title badge bg-primary fs-6"><strong>Personal Information</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Last Name</label>
+                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Dela Cruz" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">First Name</label>
+                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Pedro" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Middle Name</label>
+                            <input type="text" class="form-control" name="middlename" id="middlename" placeholder="Dantes">
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Email</label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="pedro@yahoo.com" required>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
-          {{-- end of 2nd row --}}
-          {{-- 3rd row --}}
-          <div class="row p-1">
-            <div class="col-md-3">
-              <label for="formControlInput" class="form-label font-weight-bold">TIN</label>
-              <input type="text" class="form-control" name="tin" id="tin" placeholder="" required>
-            </div>
-            <div class="col-md-3">
-              <label for="formControlInput" class="form-label font-weight-bold">PHILHEALTH</label>
-              <input type="text" class="form-control" name="philhealth" id="philhealth" placeholder="" required>
-            </div>
-            <div class="col-md-3">
-              <label for="formControlInput" class="form-label font-weight-bold">PAGIBIG</label>
-              <input type="text" class="form-control" name="pagibig" id="pagibig" placeholder="" required>
-            </div>
-            <div class="col-md-3">
-              <label for="formControlInput" class="form-label font-weight-bold">GSIS</label>
-              <input type="text" class="form-control" name="gsis" id="gsis" placeholder="" required>
-            </div>
+          <div class="row">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title badge bg-primary fs-6"><strong>Government Numbers</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Employee Number</label>
+                            <input type="text" class="form-control" name="empnumber" id="empnumber" placeholder="00212351" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Item Number</label>
+                            <input type="text" class="form-control" name="itemnumber" id="itemnumber" placeholder="10023-20351" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">TIN</label>
+                            <input type="text" class="form-control" name="tin" id="tin" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">PHILHEALTH</label>
+                            <input type="text" class="form-control" name="philhealth" id="philhealth" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">PAGIBIG</label>
+                            <input type="text" class="form-control" name="pagibig" id="pagibig" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">GSIS</label>
+                            <input type="text" class="form-control" name="gsis" id="gsis" placeholder="" required>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
-          {{-- end of 3rd row --}}
-          {{-- 4th row --}}
-          <div class="row p-1">
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Position</label>
-              <input type="text" class="form-control" name="position" id="position" placeholder="Teacher I" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Advisory Class</label>
-              <input type="text" class="form-control" name="advisory" id="advisory" placeholder="Grade 7" required>
-            </div>
-            <div class="col-md-4">
-              <label for="formControlInput" class="form-label font-weight-bold">Teaching Loads</label>
-              <input type="text" class="form-control" name="loads" id="loads" placeholder="3" required>
-            </div>
+          <div class="row">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title badge bg-primary fs-6"><strong>Item Information</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Position</label>
+                            <input type="text" class="form-control" name="position" id="position" placeholder="Teacher I" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Coordinatorship</label>
+                            <input type="text" class="form-control" name="coordinatorship" id="coordinatorship" placeholder="">
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Advisory Class</label>
+                            <input type="text" class="form-control" name="advisory" id="advisory" placeholder="Grade 7">
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Teaching Loads</label>
+                            <input type="text" class="form-control" name="loads" id="loads" placeholder="3" required>
+                        </div>
+                        <div class="col-md-8 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Subjects Taught</label>
+                            <input type="text" class="form-control" name="subjects" id="subjects" placeholder="Mathematics, Science, etc." required>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
-          {{-- end of 4th row --}}
-          {{-- last row --}}
-          <div class="row p-1">
-            <div class="col-md-8">
-              <label for="formControlInput" class="form-label font-weight-bold">Subjects Taught</label>
-              <input type="text" class="form-control" name="subjects" id="subjects" placeholder="Mathematics, Science, etc." required>
-            </div>
+          <div class="row">
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title badge bg-primary fs-6"><strong>Vaccination Details</strong></h5>
+                    <div class="row">
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">1st Dose</label>
+                            <input type="date" class="form-control" name="firstdose" id="firstdose" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">2nd Dose</label>
+                            <input type="date" class="form-control" name="seconddose" id="seconddose" placeholder="">
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Additional Dose</label>
+                            <input type="date" class="form-control" name="additional" id="boostoer" placeholder="">
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
+                            <input type="text" class="form-control" name="firstbrand" id="firstbrand" placeholder="" required>
+                        </div>
+                        <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
+                            <input type="text" class="form-control" name="secondbrand" id="secondbrand" placeholder="" required>
+                        </div>
+                         <div class="col-md-4 p-1">
+                            <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
+                            <input type="text" class="form-control" name="additionalbrand" id="additionalbrand" placeholder="Optional" required>
+                        </div>
+                    </div>
+                </div>
+              </div>
           </div>
-          {{-- end of last row --}}
-
       </div>
       <div class="modal-footer">
         <button id="savedata" name="savedata" type="button" class="btn btn-success">Save</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button id="updatedata" name="updatedata" type="button" class="btn btn-success">Update</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
       </div>
     </form>
     </div>
   </div>
-</div> 
-              {{-- DELETE MODAL --}}
-              {{-- <div class="modal fade" data-backdrop="static"  id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{{ __('Delete Employee') }}</h5>
-                            
-                                <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
-                           
-                        </div>
-                        <div class="modal-body text-left">Are you sure you want to delete this employee?
-                          
-                        </div>
-                        <div class="modal-footer">
-                          <a class="btn btn-success" style="width:4rem;" href="" onclick="event.preventDefault(); document.getElementById('delete-user').submit()">{{ __('Yes') }}</a>
-                          <form id="delete-user" action="" method="post" style="display: none;">
-                              @csrf
-                              @method('DELETE')
-                          </form>
-                          <button type="button" class="btn btn-danger" style="width:4rem;" data-bs-dismiss="modal">No</button>
-                        </div>
-                    </div>
-                </div> --}}
-              </div>
-              {{-- END OF DELETE MODAL --}}
+</div>   <!-- end of add modal -->
 
 </div>
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -179,7 +198,7 @@
         processing: true,
         serverSide: true,
         select: true,
-        ajax: "{{route('employees.index')}}",
+        ajax: "{{ url('admin/masterlist') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', class:'text-center'},
             {data: 'empnumber', name: 'empnumber'},
@@ -200,58 +219,80 @@
           'colvis'
         ],
 
-      columnDefs: [ { 
-        targets: -1,
-        visible: false
-      }]
+      // columnDefs: [ { 
+      //   targets: -1,
+      //   visible: false
+      // }]
     });
 
     // SHOW ADD MODAL
     $('#addEmployee').click(function () {
         $('#id').val('');
-        $('#savedata').html('Add');
-        $('#modalHeading').html("Add Employee");
         $('#employeeForm').trigger("reset");
         $('#addModal').modal('show');
+        $('#savedata').show();
+        $('#updatedata').hide();
         $('#error').html('');
     });
+
 
     // ADD FUNCTION
     $('#savedata').click(function (e) {
                 e.preventDefault();
                 $.ajax({
                     data: $('#employeeForm').serialize(),
-                    url: "{{route('employees.store')}}",
+                    url: "{{ url('admin/masterlist/store') }}",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function (data) {
+
+                        $('#employeeForm').trigger("reset");
+                        $('#addModal').modal('hide');
+                        table.draw();
+                        toastr.success('Employee saved successfully','Success');
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                        toastr.error(data['responseJSON']['message'],'Error has occured');
+                    }
+                });
+            });
+
+    // update
+    $('#updatedata').click(function (e) {
+                e.preventDefault();
+                var id = $(this).data('id');
+                $.ajax({
+                    data: $('#employeeForm').serialize(),
+                    url: "{{ url('admin/masterlist/update') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
                         $('#employeeForm').trigger("reset");
                         $('#addModal').modal('hide');
                         table.draw();
-                        toastr.success('Employee saved successfully','Success');
-
+                        toastr.success('Employee updated successfully','Success');
                     },
                     error: function (data) {
                         console.log('Error:', data);
-                        $('#error').html("<div class='alert alert-danger'>"+data['responseJSON']['message'] + "</div>");
-                        $('#savedata').html('Error in saving');
+                        toastr.error(data['responseJSON']['message'],'Error has occured');
                     }
                 });
             });
 
-
     // EDIT
     $('body').on('click', '.editEmployee', function () {
-                $('#savedata').html('Update');
+                $('#savedata').hide();
                 var id = $(this).data('id');
-
+                $('#savedata').hide();
+                $('#updatedata').show();
                 $.ajax({
-                    type:"PUT",
-                    url: "{{route('employees.index')}}"+'/'+id,
+                    type:"GET",
+                    url: "{{ url('admin/masterlist/edit') }}",
                     data: { id: id },
                     dataType: 'json',
                     success: function(data){
-                        $('#modalHeading').html("Edit Employee");
+                        $('#modelHeading').html("Edit Employee");
                         $('#addModal').modal('show');
                         $('#id').val(data.id);
                         $('#lastname').val(data.lastname);
@@ -261,26 +302,31 @@
                         $('#empnumber').val(data.empnumber);
                         $('#itemnumber').val(data.itemnumber);
                         $('#tin').val(data.tin);
+                        $('#gsis').val(data.gsis);
                         $('#philhealth').val(data.philhealth);
                         $('#pagibig').val(data.pagibig);
-                        $('#gsis').val(data.gsis);
                         $('#position').val(data.position);
+                        $('#coordinatorship').val(data.coordinatorship);
+                        $('#subjects').val(data.subjects);
                         $('#advisory').val(data.advisory);
                         $('#loads').val(data.loads);
-                        $('#subjects').val(data.subjects);
-                        $('#error').html('');
+                        $('#firstdose').val(data.firstdose);
+                        $('#seconddose').val(data.seconddose);
+                        $('#additional').val(data.additional);
+                        $('#firstbrand').val(data.firstbrand);
+                        $('#secondbrand').val(data.secondbrand);
+                        $('#additionalbrand').val(data.additionalbrand);
                     }
                 });
-
             });
-
+    
     // DELETE 
     $('body').on('click', '.deleteEmployee', function () {
       var id = $(this).data("id");
         if (confirm("Are You sure want to delete this employee?") === true) {
             $.ajax({
                 type: "DELETE",
-                url: "{{route('employees.index')}}"+'/'+id,
+                url: "{{ url('admin/masterlist/destroy') }}",
                 data:{
                   id:id
                 },
@@ -289,7 +335,7 @@
                   toastr.success('Employee deleted successfully','Success');
                 },
                 error: function (data) {
-                  console.log('Error:', data);
+                  toastr.error(data['responseJSON']['message'],'Error has occured');
                 }
             });
         }

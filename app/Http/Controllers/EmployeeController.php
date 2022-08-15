@@ -23,8 +23,9 @@ class EmployeeController extends Controller
             return DataTables::of($employees)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
-                    $btn = '<a href="javascript:void(0);" data-id="'.$row->id.'"  class="btn btn-warning btn-sm editEmployee">Edit</a> ';
-                    $btn .= '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-danger btn-sm deleteEmployee">Delete</a>';
+                    $btn = '<a href="javascript:void(0);" data-id="'.$row->id.'"  class="btn btn-info btn-sm viewEmployee"><i class="fas fa-fw fa-eye"></i> View</a> ';
+                    $btn .= '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-success btn-sm editEmployee"><i class="fas fa-fw fa-pencil-alt"></i> Edit</a> ';
+                    $btn .= '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-danger btn-sm deleteEmployee"><i class="fas fa-fw fa-trash-alt"></i> Delete</a>';
                     return $btn;
                 })
                 ->rawColumns(['action'])
@@ -54,7 +55,6 @@ class EmployeeController extends Controller
         $request->validate([
             'lastname' => 'required',
             'firstname' => 'required',
-            'middlename' => 'required',
             'email' => 'required|unique:employees',
             'empnumber' => 'required',
             'itemnumber' => 'required',
@@ -64,7 +64,6 @@ class EmployeeController extends Controller
             'gsis' => 'required',
             'position' => 'required',
             'subjects' => 'required',
-            'advisory' => 'required',
             'loads' => 'required',
         ]);
 
@@ -83,9 +82,16 @@ class EmployeeController extends Controller
                 'pagibig' => $request->pagibig,
                 'gsis' => $request->gsis,
                 'position' => $request->position,
+                'coordinatorship' => $request->coordinatorship,
                 'subjects' => $request->subjects,
                 'advisory' => $request->advisory,
                 'loads' => $request->loads,
+                'firstdose' => $request->firstdose,
+                'seconddose' => $request->seconddose,
+                'additional' => $request->additional,
+                'firstbrand' => $request->firstbrand,
+                'secondbrand' => $request->secondbrand,
+                'additionalbrand' => $request->additionalbrand
             ]
         );
         return response()->json(['success'=>'Employee saved successfully.']);
@@ -108,9 +114,13 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
-
+        $where = [
+            'id' => $request->id
+        ];
+        $employees  = Employee::where($where)->first();
+        return response()->json($employees,);
     }
 
     /**
@@ -120,13 +130,34 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $where = [
-            'id' => $request->id
-        ];
-        $employees  = Employee::where($where)->first();
-        return response()->json($employees);
+        $employees = Employee::where('id', '=' ,$request->id)->first();
+
+        $employees->lastname = $request->lastname;
+        $employees->firstname = $request->firstname;
+        $employees->middlename = $request->middlename;
+        $employees->email = $request->email;
+        $employees->empnumber = $request->empnumber;
+        $employees->itemnumber = $request->itemnumber;
+        $employees->tin = $request->tin;
+        $employees->gsis = $request->gsis;
+        $employees->philhealth = $request->philhealth;
+        $employees->pagibig = $request->pagibig;
+        $employees->position = $request->position;
+        $employees->coordinatorship = $request->coordinatorship;
+        $employees->advisory = $request->advisory;
+        $employees->loads = $request->loads;
+        $employees->subjects = $request->subjects;
+        $employees->firstdose = $request->firstdose;
+        $employees->seconddose = $request->seconddose;
+        $employees->additional = $request->additional;
+        $employees->firstbrand = $request->firstbrand;
+        $employees->secondbrand = $request->secondbrand;
+        $employees->additionalbrand = $request->additionalbrand;
+
+        $employees->save();
+        return response()->json(['success'=>'Employee updated successfully.']);
     }
 
     /**
@@ -135,9 +166,9 @@ class EmployeeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        Employee::find($id)->delete();
+        $employees = Employee::where('id', $request->id)->delete();
         return response()->json([
             'success'=>'Employee deleted successfully.'
         ]);

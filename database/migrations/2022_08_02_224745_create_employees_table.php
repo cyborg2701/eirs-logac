@@ -15,20 +15,27 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('lastname');
             $table->string('firstname');
-            $table->string('middlename');
-            $table->integer('empnumber');
-            $table->integer('gsis');
-            $table->integer('philhealth');
-            $table->integer('pagibig');
-            $table->integer('tin');
-            $table->integer('itemnumber');
+            $table->string('middlename')->nullable();
+            $table->string('empnumber');
+            $table->string('gsis');
+            $table->string('philhealth');
+            $table->string('pagibig');
+            $table->string('tin');
+            $table->string('itemnumber');
             $table->string('position');
+            $table->string('coordinatorship')->nullable();
             $table->string('subjects');
             $table->integer('loads');
-            $table->string('advisory');
+            $table->string('advisory')->nullable();
+            $table->date('firstdose')->nullable();
+            $table->date('seconddose')->nullable();
+            $table->date('additional')->nullable();
+            $table->string('firstbrand')->nullable();
+            $table->string('secondbrand')->nullable();
+            $table->string('additionalbrand')->nullable();
             $table->timestamps();
         });
     }

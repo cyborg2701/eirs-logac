@@ -27,10 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $employees = DB::table('employees')
-                        ->where('email', '=',  Auth::user()->email)
-                        ->get();
-        return view('/home', compact('employees'));
+        return view('home');
     }
     public function adminHome()
     {

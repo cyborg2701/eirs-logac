@@ -20,8 +20,15 @@ class Employee extends Model
         'tin', 
         'itemnumber',
         'position', 
+        'coordinatorship',
         'subjects', 
         'loads', 
-        'advisory'
+        'advisory',
+        'firstdose',
+        'seconddose',
+        'additional',
+        'firstbrand',
+        'secondbrand',
+        'additionalbrand'
     ];
 }

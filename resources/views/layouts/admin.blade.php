@@ -10,8 +10,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Employee Information System</title>
-
+    <title>Employee Records Information System <!-- Logac National high school --></title>
+    {{-- bootstrap 5 --}}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Fonts -->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -21,17 +22,12 @@
 
     <!-- Favicon -->
     <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
-
-    {{-- boostrap 5 css  --}}
  
     {{-- datatable css --}}
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css">
-
-    {{-- sweet alert css --}}
-    {{-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.css"> --}}
-    {{-- toastr --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    
 </head>
 <body id="page-top">
 
@@ -45,7 +41,7 @@
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+            <div class="sidebar-brand-text mx-3">Welcome Admin</div>
         </a>
 
         <!-- Divider -->
@@ -54,12 +50,12 @@
         <!-- Nav Item - Dashboard -->
         <li class="nav-item {{ Nav::isRoute('admin.home') }}">
             <a class="nav-link" href="{{ route('admin.home') }}">
-                <i class="fas fa-fw fa-tacadmin.hometer-alt"></i>
+                <i class="fas fa-fw fa-home"></i>
                 <span>{{ __('Dashboard') }}</span></a>
         </li>
          <!-- Employee nav -->
-        <li class="nav-item {{ Nav::isRoute('employees.index') }}">
-            <a class="nav-link" href="{{ route('employees.index') }}">
+        <li class="nav-item {{ Nav::isRoute('admin.index') }}">
+            <a class="nav-link" href="{{ route('admin.index') }}">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>{{ __('Employees') }}</span></a>
         </li>
@@ -83,8 +79,8 @@
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
-                <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span>
+                {{-- <i class="fas fa-fw fa-hands-helping"></i>
+                <span>{{ __('About') }}</span> --}}
             </a>
         </li>
 
@@ -92,9 +88,9 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        {{-- <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+        </div> --}}
 
     </ul>
     <!-- End of Sidebar -->
@@ -216,18 +212,14 @@
 
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
-{{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.colVis.min.js"></script>
-{{-- <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> --}}
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.17.2/dist/sweetalert2.min.js"></script>
-{{-- <script src="{{ asset('js/crud.js') }}" type="text/javascript"></script> --}}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
+<script src="{{ asset('vendor/dataTables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('vendor/dataTables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('vendor/dataTables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('vendor/dataTables/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('js/toastr.min.js') }}"></script>
 </body>
 </html>

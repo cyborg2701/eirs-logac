@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\MasterlistController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,23 +17,36 @@ use App\Http\Controllers\EmployeeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
+Route::get('home', [HomeController::class, 'index'])->name('user.home')->middleware('is_user');
+Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+
+Route::group(['prefix' => 'employees', 'middleware' => ['is_user']], function(){
+    Route::get('index', [MasterlistController::class, 'index'])->name('employees.index');
+    Route::post('store', [MasterlistController::class, 'store'])->name('employees.store');
+    Route::get('edit', [MasterlistController::class, 'edit'])->name('employees.edit');
+    Route::post('update', [MasterlistController::class, 'update'])->name('employees.update');
+    Route::delete('destroy', [MasterlistController::class, 'destroy'])->name('employees.destroy');
 });
 
-
-Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware('is_user');
-
+Route::group(['prefix' => 'admin/masterlist', 'middleware' => ['is_admin']], function(){
+    Route::get('', [EmployeeController::class, 'index'])->name('admin.index');
+    Route::post('store', [EmployeeController::class, 'store'])->name('admin.store');
+    Route::get('edit', [EmployeeController::class, 'edit'])->name('admin.edit');
+    Route::post('update', [EmployeeController::class, 'update'])->name('admin.update');
+    Route::delete('destroy', [EmployeeController::class, 'destroy'])->name('admin.destroy');
+});
 
 Route::middleware(['is_admin'])->group(function(){
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 Route::get('/admin/profile', 'ProfileController@index')->name('profile');
 Route::put('/admin/profile', 'ProfileController@update')->name('profile.update');
 Route::get('/admin/about', function () {
     return view('about');
 })->name('about');
-
-Route::resource('/admin/employees', EmployeeController::class);
 });
 
 Auth::routes();
