@@ -1,6 +1,32 @@
 @extends('layouts.user')
 
 @section('main-content')
+<style>
+  #title {
+    display: none;
+  }
+  @media screen {
+    #printSection {
+        display: none;
+    }
+}
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #title {
+      display: block;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}
+</style>
     <div class="text-right">
       <!-- Button trigger modal -->
       <a href="javascript:void(0)" class="btn btn-primary mb-1" id="addEmployee">Add Employee</a>
@@ -167,25 +193,28 @@
   </div>
 </div>   <!-- end of add modal -->
 
+{{-- view modal --}}
 <div class="modal fade" id="viewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
-          <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
-        </div>
-        <div class="modal-body">
-          <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
-            {{-- 1st row --}}
-            <div class="row">
-              <div class="accordion accordion-flush" id="accordionFlushExample">
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                      <span class="badge bg-success fs-6">Personal Information</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
+        <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+      </div>
+      <div class="modal-body" id="printThis">
+        <h2 id="title">Employee Information</h2>
+        <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
+          {{-- 1st row --}}
+          <div class="row">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                    <span class="badge bg-success fs-6">Personal Information</span>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                  <div class="accordion-body">
                     <div class="row">
                       <div class="col-md-auto m-3">
                         <label for="formControlInput" class="form-label">Last Name</label>
@@ -199,21 +228,22 @@
                         <label for="formControlInput" class="form-label">Middle Name</label>
                         <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
                       </div>
-                      <div class="col-md-auto m-3">
+                      <div class="col-md-4 m-3">
                         <label for="formControlInput" class="form-label">Email</label>
                         <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_email" id="view_email" placeholder="" readonly>
                       </div>
                     </div>
                   </div>
                 </div>
-  
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                      <span class="badge bg-success fs-6">Government Numbers</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                    <span class="badge bg-success fs-6">Government Numbers</span>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                  <div class="accordion-body">
                     <div class="row">
                       <div class="col-md-auto m-3">
                         <label for="formControlInput" class="form-label">Employee Number</label>
@@ -242,14 +272,15 @@
                     </div>
                   </div>
                 </div>
-  
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                      <span class="badge bg-success fs-6">Item Information</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                    <span class="badge bg-success fs-6">Item Information</span>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                  <div class="accordion-body">
                     <div class="row">
                       <div class="col-md-auto m-3">
                         <label for="formControlInput" class="form-label">Position</label>
@@ -274,14 +305,15 @@
                     </div>
                   </div>
                 </div>
-  
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                      <span class="badge bg-success fs-6">Vaccination Details</span>
-                    </button>
-                  </h2>
-                  <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                    <span class="badge bg-success fs-6">Item Information</span>
+                  </button>
+                </h2>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                  <div class="accordion-body">
                     <div class="row">
                       <div class="col-md-auto m-3">
                         <label for="formControlInput" class="form-label">1st Dose</label>
@@ -310,19 +342,18 @@
                     </div>
                   </div>
                 </div>
-  
-  
               </div>
             </div>
-        </div>
-        <div class="modal-footer">
-          {{-- <button  type="button" class="btn btn-danger">Print</button> --}}
-          <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-        </div>
-      </form>
+          </div>
       </div>
+      <div class="modal-footer">
+        <button  type="button" class="btn btn-primary" id="print">Print</button>
+        <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+    </form>
     </div>
-  </div>   <!-- end of view modal -->
+  </div>
+</div>   <!-- end of view modal -->
 
 </div>
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -363,7 +394,16 @@
             {data: 'position', name: 'position'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false, class:'text-center'},
-        ]
+        ],
+        columnDefs: [ 
+          {
+            'targets': 3,
+            'render': function(data, type, row){
+              return data +', '+row.firstname+' ' +row.middlename;
+            },
+            'targets': 3
+        }
+      ]
 
     });
 
@@ -519,6 +559,24 @@
                     }
                 });
             });
+            document.getElementById("print").onclick = function () {
+    printElement(document.getElementById("printThis"));
+};
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    window.print();
+}
 });
 </script>
 
