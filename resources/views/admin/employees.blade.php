@@ -1,6 +1,32 @@
 @extends('layouts.admin')
 
 @section('main-content')
+<style>
+  #title {
+    display: none;
+  }
+  @media screen {
+    #printSection {
+        display: none;
+    }
+}
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #title {
+      display: block;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+}
+</style>
     <h1 class="h3 mb-2 text-gray-800" hidden>{{ __('Employee List') }}</h1>
     <div class="text-right">
       <!-- Button trigger modal -->
@@ -11,12 +37,12 @@
   <table class="table table-bordered data-table" >
     <thead>
         <tr class="table-primary">
-          <td>No.</td>
-          <td>Employee Number</td>
-          <td>Item Number</td>
-          <td>Name</td>
-          <td>Position</td>
-          <td>Email</td>
+          <td class="text-center">No.</td>
+          <td class="text-center">Employee Number</td>
+          <td class="text-center">Item Number</td>
+          <td class="text-center">Name</td>
+          <td class="text-center">Position</td>
+          <td class="text-center">Email</td>
           <td>Action</td>
         </tr>
     </thead>
@@ -178,149 +204,153 @@
         <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
         <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="printThis">
+        <h2 id="title">Employee Information</h2>
         <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
           {{-- 1st row --}}
           <div class="row">
-            <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion" id="accordionPanelsStayOpenExample">
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
                     <span class="badge bg-success fs-6">Personal Information</span>
                   </button>
                 </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="row">
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Last Name</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_lastname" id="view_lastname" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">First Name</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Middle Name</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Email</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_email" id="view_email" placeholder="" readonly>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Last Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_lastname" id="view_lastname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">First Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Middle Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-4 m-3">
+                        <label for="formControlInput" class="form-label">Email</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_email" id="view_email" placeholder="" readonly>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
                     <span class="badge bg-success fs-6">Government Numbers</span>
                   </button>
                 </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="row">
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Employee Number</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_empnumber" id="view_empnumber" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Item Number</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_itemnumber" id="view_itemnumber" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">TIN</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_tin" id="view_tin" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">GSIS</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_gsis" id="view_gsis" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">PHILHEALTH</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_philhealth" id="view_philhealth" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">PAGIBIG</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_pagibig" id="view_pagibig" placeholder="" readonly>
+                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Employee Number</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_empnumber" id="view_empnumber" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Item Number</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_itemnumber" id="view_itemnumber" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">TIN</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_tin" id="view_tin" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">GSIS</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_gsis" id="view_gsis" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">PHILHEALTH</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_philhealth" id="view_philhealth" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">PAGIBIG</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_pagibig" id="view_pagibig" placeholder="" readonly>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
                     <span class="badge bg-success fs-6">Item Information</span>
                   </button>
                 </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="row">
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Position</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_position" id="view_position" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Coordinatorship</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_coordinatorship" id="view_coordinatorship" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Advisory Class</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_advisory" id="view_advisory" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Teaching Loads</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_loads" id="view_loads" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-5 m-3">
-                      <label for="exampleFormControlTextarea1" class="form-label">Subjects Taught</label>
-                      <textarea class="form-control-plaintext" id="view_subjects" rows="3" readonly></textarea>
+                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Position</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_position" id="view_position" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Coordinatorship</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_coordinatorship" id="view_coordinatorship" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Advisory Class</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_advisory" id="view_advisory" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Teaching Loads</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_loads" id="view_loads" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-5 m-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Subjects Taught</label>
+                        <textarea class="form-control-plaintext" id="view_subjects" rows="3" readonly></textarea>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
               <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                    <span class="badge bg-success fs-6">Vaccination Details</span>
+                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                    <span class="badge bg-success fs-6">Item Information</span>
                   </button>
                 </h2>
-                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                  <div class="row">
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">1st Dose</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstdose" id="view_firstdose" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">2nd Dose</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_seconddose" id="view_seconddose" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Additional Dose</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additional" id="view_additional" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Vaccine Brand</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstbrand" id="view_firstbrand" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Vaccine Brand</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_secondbrand" id="view_secondbrand" placeholder="" readonly>
-                    </div>
-                    <div class="col-md-auto m-3">
-                      <label for="formControlInput" class="form-label">Vaccine Brand</label>
-                      <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additionalbrand" id="view_additionalbrand" placeholder="" readonly>
+                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                  <div class="accordion-body">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">1st Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstdose" id="view_firstdose" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">2nd Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_seconddose" id="view_seconddose" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Additional Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additional" id="view_additional" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstbrand" id="view_firstbrand" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_secondbrand" id="view_secondbrand" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additionalbrand" id="view_additionalbrand" placeholder="" readonly>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-
-
             </div>
           </div>
       </div>
       <div class="modal-footer">
-        {{-- <button  type="button" class="btn btn-danger">Print</button> --}}
+        <button  type="button" class="btn btn-primary" id="print">Print</button>
         <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
       </div>
     </form>
@@ -369,7 +399,16 @@
             {data: 'position', name: 'position'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false, class:'text-center'},
-        ]
+        ],
+        columnDefs: [ 
+          {
+            'targets': 3,
+            'render': function(data, type, row){
+              return data +', '+row.firstname+' ' +row.middlename;
+            },
+            'targets': 3
+        }
+      ]
     });
 
     // SHOW ADD MODAL
@@ -527,6 +566,24 @@
         }
 
     });
+    document.getElementById("print").onclick = function () {
+    printElement(document.getElementById("printThis"));
+};
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    window.print();
+}
 });
 </script>
 

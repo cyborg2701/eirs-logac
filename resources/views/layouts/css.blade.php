@@ -21,4 +21,5 @@
  {{-- datatable css --}}
  {{-- <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
  <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}"> --}}
+ <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.dataTables.min.css">
  <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">

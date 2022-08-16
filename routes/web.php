@@ -51,7 +51,4 @@ Route::group(['prefix' => 'admin/masterlist', 'middleware' => ['is_admin']], fun
             })->name('about');
     
 });
-
-
-
 Auth::routes();

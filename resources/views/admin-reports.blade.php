@@ -1,15 +1,17 @@
 @extends('layouts.admin')
 
 @section('main-content')
-  <table class="table table-bordered table-hover data-table" >
+  <table class="table table-bordered table-hover data-table" style="width: 100%" >
     <thead>
         <tr class="table-primary">
-          <td>No.</td>
-          <td>Employee Number</td>
-          <td>Item Number</td>
-          <td>Name</td>
-          <td>Position</td>
-          <td>Email</td>
+          <td class="text-center">No.</td>
+          <td class="text-center">Employee Number</td>
+          <td class="text-center">Item Number</td>
+          <td class="text-center">Position</td>
+          <td class="text-center">Name</td>
+          <td class="text-center">Loads</td>
+          <td class="text-center">Advisory</td>
+          <td class="text-center">Subjects</td>
         </tr>
     </thead>
     <tbody></tbody>
@@ -45,13 +47,20 @@
         serverSide: true,
         select: true,
         ajax: "{{ route('admin.report') }}",
+        responsive: {
+            details: {
+                type: 'column'
+            }
+        },
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex', class:'text-center'},
+            {data: 'DT_RowIndex', name: '', class:'text-left'},
             {data: 'empnumber', name: 'empnumber'},
             {data: 'itemnumber', name: 'itemnumber'},
-            {data: 'lastname', name: 'lastname'},
             {data: 'position', name: 'position'},
-            {data: 'email', name: 'email'},
+            {data: 'lastname', name: 'lastname'},
+            {data: 'loads', name: 'loads'},
+            {data: 'advisory', name: 'advisory'},
+            {data: 'subjects', name: 'subjects'},
         ],
         dom: 'Bfrtip',
         buttons: [
@@ -66,7 +75,16 @@
             'pdf',
             'spacer',
             'print'
-        ]
+        ],
+        columnDefs: [ 
+          {
+            'targets': 4,
+            'render': function(data, type, row){
+              return data +', '+row.firstname+' ' +row.middlename;
+            },
+            'targets': 4
+        }
+      ]
     });
 });
 </script>
