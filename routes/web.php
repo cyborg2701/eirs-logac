@@ -17,36 +17,41 @@ use App\Http\Controllers\MasterlistController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return redirect('/login');
+});
 
 
 Route::get('home', [HomeController::class, 'index'])->name('user.home')->middleware('is_user');
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-
+Route::get('admin/dashboard', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::group(['prefix' => 'employees', 'middleware' => ['is_user']], function(){
     Route::get('index', [MasterlistController::class, 'index'])->name('employees.index');
     Route::post('store', [MasterlistController::class, 'store'])->name('employees.store');
     Route::get('edit', [MasterlistController::class, 'edit'])->name('employees.edit');
+    Route::get('show', [MasterlistController::class, 'show'])->name('employees.show');
     Route::post('update', [MasterlistController::class, 'update'])->name('employees.update');
     Route::delete('destroy', [MasterlistController::class, 'destroy'])->name('employees.destroy');
+    Route::get('reports', [MasterlistController::class, 'report'])->name('employees.report');
 });
 
 Route::group(['prefix' => 'admin/masterlist', 'middleware' => ['is_admin']], function(){
+
     Route::get('', [EmployeeController::class, 'index'])->name('admin.index');
     Route::post('store', [EmployeeController::class, 'store'])->name('admin.store');
     Route::get('edit', [EmployeeController::class, 'edit'])->name('admin.edit');
     Route::post('update', [EmployeeController::class, 'update'])->name('admin.update');
+    Route::get('show', [EmployeeController::class, 'show'])->name('admin.show');
     Route::delete('destroy', [EmployeeController::class, 'destroy'])->name('admin.destroy');
+    Route::get('reports', [EmployeeController::class, 'report'])->name('admin.report');
+
+    Route::get('/admin/profile', 'ProfileController@index')->name('profile');
+    Route::put('/admin/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('/admin/about', function () {
+        return view('about');
+            })->name('about');
+    
 });
 
-Route::middleware(['is_admin'])->group(function(){
-Route::get('/admin/profile', 'ProfileController@index')->name('profile');
-Route::put('/admin/profile', 'ProfileController@update')->name('profile.update');
-Route::get('/admin/about', function () {
-    return view('about');
-})->name('about');
-});
+
 
 Auth::routes();

@@ -1,10 +1,9 @@
 @extends('layouts.user')
 
 @section('main-content')
-    <h1 class="h3 mb-2 text-gray-800">{{ __('Employee List') }}</h1>
     <div class="text-right">
       <!-- Button trigger modal -->
-      <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="addEmployee">Add Employee</a>
+      <a href="javascript:void(0)" class="btn btn-primary mb-1" id="addEmployee">Add Employee</a>
       
     </div>
 <div class="mt-2">
@@ -168,7 +167,162 @@
   </div>
 </div>   <!-- end of add modal -->
 
-
+<div class="modal fade" id="viewModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
+          <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+        </div>
+        <div class="modal-body">
+          <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
+            {{-- 1st row --}}
+            <div class="row">
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      <span class="badge bg-success fs-6">Personal Information</span>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Last Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_lastname" id="view_lastname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">First Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Middle Name</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstname" id="view_firstname" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Email</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_email" id="view_email" placeholder="" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                      <span class="badge bg-success fs-6">Government Numbers</span>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Employee Number</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_empnumber" id="view_empnumber" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Item Number</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_itemnumber" id="view_itemnumber" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">TIN</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_tin" id="view_tin" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">GSIS</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_gsis" id="view_gsis" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">PHILHEALTH</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_philhealth" id="view_philhealth" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">PAGIBIG</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_pagibig" id="view_pagibig" placeholder="" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                      <span class="badge bg-success fs-6">Item Information</span>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Position</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_position" id="view_position" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Coordinatorship</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_coordinatorship" id="view_coordinatorship" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Advisory Class</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_advisory" id="view_advisory" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Teaching Loads</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_loads" id="view_loads" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-5 m-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Subjects Taught</label>
+                        <textarea class="form-control-plaintext" id="view_subjects" rows="3" readonly></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                      <span class="badge bg-success fs-6">Vaccination Details</span>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="row">
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">1st Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstdose" id="view_firstdose" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">2nd Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_seconddose" id="view_seconddose" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Additional Dose</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additional" id="view_additional" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_firstbrand" id="view_firstbrand" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_secondbrand" id="view_secondbrand" placeholder="" readonly>
+                      </div>
+                      <div class="col-md-auto m-3">
+                        <label for="formControlInput" class="form-label">Vaccine Brand</label>
+                        <input type="text" class="form-control-plaintext fw-bold text-uppercase" name="view_additionalbrand" id="view_additionalbrand" placeholder="" readonly>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+  
+              </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          {{-- <button  type="button" class="btn btn-danger">Print</button> --}}
+          <button  type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>   <!-- end of view modal -->
 
 </div>
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
@@ -209,22 +363,8 @@
             {data: 'position', name: 'position'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false, class:'text-center'},
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-          {
-            extend: 'print',
-            exportOptions: {
-              columns: ':visible'
-            }
-          },
-          'colvis'
-        ],
+        ]
 
-      // columnDefs: [ { 
-      //   targets: -1,
-      //   visible: false
-      // }]
     });
 
     // SHOW ADD MODAL
@@ -342,6 +482,42 @@
                     }
                 });
 
+            });
+    // VIEW
+     // View
+     $('body').on('click', '.viewEmployee', function () {
+                var id = $(this).data('id');
+                $.ajax({
+                    type:"GET",
+                    url: "{{ url('employees/show') }}",
+                    data: { id: id},
+                    dataType: 'json',
+                    success: function(data){
+                        $('#viewModal').modal('show');
+                        $('#view_id').val(data.id);
+                        $('#view_lastname').val(data.lastname);
+                        $('#view_firstname').val(data.firstname);
+                        $('#view_middlename').val(data.middlename);
+                        $('#view_email').val(data.email);
+                        $('#view_empnumber').val(data.empnumber);
+                        $('#view_itemnumber').val(data.itemnumber);
+                        $('#view_tin').val(data.tin);
+                        $('#view_gsis').val(data.gsis);
+                        $('#view_philhealth').val(data.philhealth);
+                        $('#view_pagibig').val(data.pagibig);
+                        $('#view_position').val(data.position);
+                        $('#view_coordinatorship').val(data.coordinatorship);
+                        $('#view_advisory').val(data.advisory);
+                        $('#view_loads').val(data.loads);
+                        $('#view_subjects').val(data.subjects);
+                        $('#view_firstdose').val(data.firstdose);
+                        $('#view_seconddose').val(data.seconddose);
+                        $('#view_additional').val(data.additional);
+                        $('#view_firstbrand').val(data.firstbrand);
+                        $('#view_secondbrand').val(data.secondbrand);
+                        $('#view_additionalbrand').val(data.additionalbrand);
+                    }
+                });
             });
 });
 </script>

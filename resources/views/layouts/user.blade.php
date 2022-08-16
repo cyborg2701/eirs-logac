@@ -10,27 +10,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Employee Records Information System <!-- Logac National high school --></title>
-    {{-- bootstrap 5 --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <!-- Fonts -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-    {{-- date time picker --}}
-    <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
- 
-    {{-- datatable css --}}
-    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-    
+    <title>Employee Records Information System <br>Logac National High School</title>
+    @include('layouts.script')
+    @include('layouts.css')
 </head>
 <body id="page-top">
 
@@ -58,6 +40,9 @@
             <a class="nav-link" href="{{ route('employees.index') }}">
                 <i class="fas fa-fw fa-users-cog"></i>
                     <span>{{ __('Employees') }}</span></a>  
+            <a class="nav-link" href="{{ route('employees.report') }}">
+                <i class="fas fa-fw fa-users-cog"></i>
+                    <span>{{ __('Reports') }}</span></a>  
         </li>
         
 
@@ -65,33 +50,26 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            {{ __('Settings') }}
-        </div>
+     
 
         <!-- Nav Item - Profile -->
-        <li class="nav-item {{ Nav::isRoute('profile') }}">
+        {{-- <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fas fa-fw fa-user"></i>
                 <span>{{ __('Profile') }}</span>
             </a>
-        </li>
+        </li> --}}
 
-        <!-- Nav Item - About -->
+        <!-- Nav Item - About 
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
                 {{-- <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('About') }}</span> --}}
             </a>
-        </li>
+        </li>-->
 
         <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
 
     </ul>
     <!-- End of Sidebar -->
@@ -104,6 +82,7 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <span class="badge bg-primary fs-4">Employee Records Information System</span>
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -125,23 +104,22 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->email }}</span>
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('profile') }}">
+                            {{-- <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Profile') }}
                             </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Settings') }}
-                            </a>
+                            </a> --}}
                             {{-- <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Activity Log') }}
@@ -209,18 +187,6 @@
         </div>
     </div>
 </div>
-
-<!-- Scripts -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-<script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/boostrap-datepicker.min.js') }}"></script>
-<script src="{{ asset('js/toastr.min.js') }}"></script>
+@stack('scripts')
 </body>
 </html>

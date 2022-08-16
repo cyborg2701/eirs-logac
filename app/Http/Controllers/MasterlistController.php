@@ -104,9 +104,13 @@ class MasterlistController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $where = [
+            'id' => $request->id
+        ];
+        $employees  = Employee::where($where)->first();
+        return response()->json($employees);
     }
 
     /**
@@ -174,5 +178,23 @@ class MasterlistController extends Controller
         return response()->json([
             'success'=>'Employee deleted successfully.'
         ]);
+    }
+    
+    public function report(Request $request)
+    {
+        $employees = [];
+        if($request->ajax()) {
+            $employees = Employee::latest()->get();
+            return DataTables::of($employees)
+                ->addIndexColumn()
+                // ->addColumn('action', function ($row) {
+                //     $btn = '<a href="javascript:void(0);" data-id="'.$row->id.'"  class="btn btn-info btn-sm viewEmployee">View</a> ';
+                //     $btn .= '<a href="javascript:void(0);" data-id="'.$row->id.'" class="btn btn-success btn-sm editEmployee">Edit</a>';
+                //     return $btn;
+                // })
+                // ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('reports', compact('employees'));
     }
 }

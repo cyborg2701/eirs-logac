@@ -10,24 +10,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Employee Records Information System <!-- Logac National high school --></title>
-    {{-- bootstrap 5 --}}
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Fonts -->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
-
-    <!-- Favicon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
- 
-    {{-- datatable css --}}
-    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/buttons.dataTables.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
-    
+    <title>Employee Records Information System <br> Logac National High School</title>
+    @include('layouts.script')
+    @include('layouts.css')
 </head>
 <body id="page-top">
 
@@ -60,6 +45,12 @@
                 <span>{{ __('Employees') }}</span></a>
         </li>
 
+        <li class="nav-item {{ Nav::isRoute('admin.report') }}">
+            <a class="nav-link" href="{{ route('admin.report') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{ __('Reports') }}</span></a>
+        </li>
+
         <!-- Divider -->
         <hr class="sidebar-divider">
 
@@ -77,20 +68,9 @@
         </li>
 
         <!-- Nav Item - About -->
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="{{ route('about') }}">
-                {{-- <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span> --}}
-            </a>
-        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
-
-        <!-- Sidebar Toggler (Sidebar) -->
-        {{-- <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div> --}}
 
     </ul>
     <!-- End of Sidebar -->
@@ -103,23 +83,11 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+                <span class="badge bg-primary fs-4">Employee Records Information System</span>
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
-                <!-- Topbar Search -->
-                {{-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form> --}}
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -129,7 +97,8 @@
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->name }}</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             {{-- <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial="{{ Auth::user()->name }}"></figure> --}}
                         </a>
                         <!-- Dropdown - User Information -->
@@ -137,10 +106,6 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Profile') }}
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Settings') }}
                             </a>
                             {{-- <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -209,17 +174,6 @@
         </div>
     </div>
 </div>
-
-<!-- Scripts -->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
-<script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/buttons.print.min.js') }}"></script>
-<script src="{{ asset('vendor/dataTables/buttons.colVis.min.js') }}"></script>
-<script src="{{ asset('js/toastr.min.js') }}"></script>
+@stack('scripts')
 </body>
 </html>
