@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('position');
             $table->string('coordinatorship')->nullable();
             $table->string('subjects');
-            $table->integer('loads');
+            $table->smallInteger('loads');
             $table->string('advisory')->nullable();
             $table->date('firstdose')->nullable();
             $table->date('seconddose')->nullable();
