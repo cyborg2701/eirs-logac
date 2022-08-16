@@ -12,7 +12,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
     <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
-    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}" defer></script>
     <script src="{{ asset('vendor/popper/popper.min.js') }}"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
 @endpush
