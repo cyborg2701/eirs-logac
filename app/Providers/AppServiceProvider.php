@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,9 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
-        if($this->app->environment('production')) {
-            \URL::forceScheme('https');
-        }
+       // force HTTPS
+        URL::forceSchema('https');
         Schema::defaultStringLength(191); 
     }
 }
