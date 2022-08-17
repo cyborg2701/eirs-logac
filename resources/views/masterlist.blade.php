@@ -300,7 +300,7 @@
                       </div>
                       <div class="col-md-5 m-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Subjects Taught</label>
-                        <textarea class="form-control-plaintext" id="view_subjects" rows="3" readonly></textarea>
+                        <textarea class="form-control-plaintext fw-bold text-uppercase" id="view_subjects" rows="3" readonly></textarea>
                       </div>
                     </div>
                   </div>

@@ -304,7 +304,7 @@
                       </div>
                       <div class="col-md-5 m-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Subjects Taught</label>
-                        <textarea class="form-control-plaintext" id="view_subjects" rows="3" readonly></textarea>
+                        <textarea class="form-control-plaintext fw-bold text-uppercase" id="view_subjects" rows="3" readonly></textarea>
                       </div>
                     </div>
                   </div>
@@ -392,7 +392,7 @@
         serverSide: true,
         responsive: true,
         select: true,
-        ajax: "{{ url('admin/masterlist') }}",
+        ajax: "{{ url('admin/employees') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex', class:'text-center'},
             {data: 'empnumber', name: 'empnumber'},
@@ -431,7 +431,7 @@
                 e.preventDefault();
                 $.ajax({
                     data: $('#employeeForm').serialize(),
-                    url: "{{ url('admin/masterlist/store') }}",
+                    url: "{{ url('admin/store') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
@@ -454,7 +454,7 @@
                 var id = $(this).data('id');
                 $.ajax({
                     data: $('#employeeForm').serialize(),
-                    url: "{{ url('admin/masterlist/update') }}",
+                    url: "{{ url('admin/update') }}",
                     type: "POST",
                     dataType: 'json',
                     success: function (data) {
@@ -479,7 +479,7 @@
                 $('#updatedata').show();
                 $.ajax({
                     type:"GET",
-                    url: "{{ url('admin/masterlist/edit') }}",
+                    url: "{{ url('admin/edit') }}",
                     data: { id: id },
                     dataType: 'json',
                     success: function(data){
@@ -516,7 +516,7 @@
                 var id = $(this).data('id');
                 $.ajax({
                     type:"GET",
-                    url: "{{ url('admin/masterlist/show') }}",
+                    url: "{{ url('admin/show') }}",
                     data: { id: id},
                     dataType: 'json',
                     success: function(data){
@@ -554,7 +554,7 @@
         if (confirm("Are You sure want to delete this employee?") === true) {
             $.ajax({
                 type: "DELETE",
-                url: "{{ url('admin/masterlist/destroy') }}",
+                url: "{{ url('admin/destroy') }}",
                 data:{
                   id:id
                 },
