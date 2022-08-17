@@ -36,37 +36,46 @@
         <li class="nav-item {{ Nav::isRoute('user.home') }}">
             <a class="nav-link" href="{{ route('user.home') }}">
                 <i class="fas fa-fw fa-home"></i>
-                    <span>{{ __('Dashboard') }}</span></a>
-            <a class="nav-link" href="{{ route('employees.index') }}">
-                <i class="fas fa-fw fa-users-cog"></i>
-                    <span>{{ __('Employees') }}</span></a>  
-            <a class="nav-link" href="{{ route('employees.report') }}">
-                <i class="fas fa-fw fa-users-cog"></i>
-                    <span>{{ __('Reports') }}</span></a>  
+                <span>{{ __('Dashboard') }}</span></a>
         </li>
-        
+
+        <li class="nav-item {{ Nav::isRoute('employees.index') }}">
+            <a class="nav-link" href="{{ route('employees.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{ __('Employees') }}</span></a>
+        </li>
+
+        <li class="nav-item {{ Nav::isRoute('employees.report') }}">
+            <a class="nav-link" href="{{ route('employees.report') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>{{ __('Reports') }}</span></a>
+        </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
      
-
+        <div class="sidebar-heading text-white-50">
+            User
+        </div>
         <!-- Nav Item - Profile -->
-        {{-- <li class="nav-item {{ Nav::isRoute('profile') }}">
-            <a class="nav-link" href="{{ route('profile') }}">
-                <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+        {{-- <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i>
+                <span class="fw-bold">{{ __('Logout') }}</span>
             </a>
         </li> --}}
 
-        <!-- Nav Item - About 
-        <li class="nav-item {{ Nav::isRoute('about') }}">
-            <a class="nav-link" href="{{ route('about') }}">
-                {{-- <i class="fas fa-fw fa-hands-helping"></i>
-                <span>{{ __('About') }}</span> --}}
+        
+
+      {{-- Nav Item - About  --}}
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>{{ __('Logout') }}</span>
             </a>
-        </li>-->
+        </li>
 
         <!-- Divider -->
 
@@ -105,32 +114,7 @@
                 <ul class="navbar-nav ml-auto">
 
                     <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->email }}</span>
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            {{-- <a class="dropdown-item" href="{{ route('profile') }}">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Profile') }}
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Settings') }}
-                            </a> --}}
-                            {{-- <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Activity Log') }}
-                            </a> --}}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Logout') }}
-                            </a>
-                        </div>
-                    </li>
+              
 
                 </ul>
 
@@ -174,7 +158,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
-                <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">

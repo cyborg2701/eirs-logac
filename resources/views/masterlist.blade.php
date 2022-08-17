@@ -56,7 +56,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
-        <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <form id="employeeForm" name="employeeForm" enctype="multipart/form-data">
@@ -199,7 +199,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalHeading" muted>Employee Information</h5>
-        <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" id="printThis">
         <h2 id="title">Employee Information</h2>

@@ -55,8 +55,8 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
-            {{ __('Settings') }}
+        <div class="sidebar-heading text-white-50">
+            Administrator
         </div>
 
         <!-- Nav Item - Profile -->
@@ -66,6 +66,14 @@
                 <span>{{ __('Profile') }}</span>
             </a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>{{ __('Logout') }}</span>
+            </a>
+        </li>
+
 
         <!-- Nav Item - About -->
 
@@ -90,36 +98,7 @@
                 </button>
                 <h1 class="badge bg-info fs-5 text-center">Employee Records Information System</h1>
                 <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
-
-                    <div class="topbar-divider d-none d-sm-block"></div>
-
-                    <!-- Nav Item - User Information -->
-                    <li class="nav-item dropdown no-arrow">
-                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
-                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            {{-- <figure class="img-profile rounded-circle avatar font-weight-bold" data-initial="{{ Auth::user()->name }}"></figure> --}}
-                        </a>
-                        <!-- Dropdown - User Information -->
-                        <div class="dropdown-menu dropdown-menu-lg-end shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="{{ route('profile') }}">
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Profile') }}
-                            </a>
-                            {{-- <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Activity Log') }}
-                            </a> --}}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Logout') }}
-                            </a>
-                        </div>
-                    </li>
-
-                </ul>
+         
 
             </nav>
             <!-- End of Topbar -->
@@ -161,7 +140,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
-                <span aria-hidden="true" type="button" data-bs-dismiss="modal" aria-label="Close">X</span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">

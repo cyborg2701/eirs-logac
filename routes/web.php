@@ -18,14 +18,14 @@ use App\Http\Controllers\MasterlistController;
 */
 
 Route::get('/', function () {
-    return redirect('/login');
+    return view('auth/login');
 });
 
 
 Route::get('home', [HomeController::class, 'index'])->name('user.home')->middleware('is_user');
 Route::get('admin/dashboard', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::group(['prefix' => 'employees', 'middleware' => ['is_user']], function(){
-    Route::get('index', [MasterlistController::class, 'index'])->name('employees.index');
+    Route::get('', [MasterlistController::class, 'index'])->name('employees.index');
     Route::post('store', [MasterlistController::class, 'store'])->name('employees.store');
     Route::get('edit', [MasterlistController::class, 'edit'])->name('employees.edit');
     Route::get('show', [MasterlistController::class, 'show'])->name('employees.show');
