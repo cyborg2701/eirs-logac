@@ -83,12 +83,12 @@
 
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <span class="badge bg-primary fs-4">Employee Records Information System</span>
+                
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-
+                <h1 class="badge bg-info fs-5 text-center">Employee Records Information System</h1>
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 

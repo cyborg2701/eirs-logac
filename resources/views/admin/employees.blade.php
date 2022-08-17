@@ -28,13 +28,14 @@
 }
 </style>
     <h1 class="h3 mb-2 text-gray-800" hidden>{{ __('Employee List') }}</h1>
-    <div class="text-right">
+    
+    <div>
       <!-- Button trigger modal -->
       <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="addEmployee">Add Employee</a>
       
     </div>
 <div class="mt-2">
-  <table class="table table-bordered data-table" >
+  <table class="table table-bordered data-table nowrap" style="width:100%">
     <thead>
         <tr class="table-primary">
           <td class="text-center">No.</td>
@@ -389,6 +390,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
+        responsive: true,
         select: true,
         ajax: "{{ url('admin/masterlist') }}",
         columns: [
@@ -410,6 +412,7 @@
         }
       ]
     });
+    new $.fn.dataTable.FixedHeader( table );
 
     // SHOW ADD MODAL
     $('#addEmployee').click(function () {
