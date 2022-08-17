@@ -29,9 +29,9 @@
 </style>
     <h1 class="h3 mb-2 text-gray-800" hidden>{{ __('Employee List') }}</h1>
     
-    <div>
+    <div class="text-right">
       <!-- Button trigger modal -->
-      <a href="javascript:void(0)" class="btn btn-primary btn-sm" id="addEmployee">Add Employee</a>
+      <a href="javascript:void(0)" class="btn btn-primary btn-sm id="addEmployee">Add Employee</a>
       
     </div>
 <div class="mt-2">
