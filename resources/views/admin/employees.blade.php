@@ -38,7 +38,7 @@
   <table class="table table-bordered data-table nowrap" style="width:100%">
     <thead>
         <tr class="table-primary">
-          <td class="text-center">No.</td>
+          <td class="text-center">No.dsa</td>
           <td class="text-center">Employee Number</td>
           <td class="text-center">Item Number</td>
           <td class="text-center">Name</td>
@@ -394,11 +394,11 @@
         select: true,
         ajax: "{{ url('admin/employees') }}",
         columns: [
-            {data: 'DT_RowIndex', name: 'DT_RowIndex', class:'text-center'},
+            {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'empnumber', name: 'empnumber'},
             {data: 'itemnumber', name: 'itemnumber'},
-            {data: 'lastname', name: 'lastname'},
-            {data: 'position', name: 'position'},
+            {data: 'lastname', name: '', class:'text-capitalize'},
+            {data: 'position', name: 'position', class:'text-capitalize'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false, class:'text-center'},
         ],
