@@ -69,15 +69,15 @@
                     <div class="row">
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Last Name</label>
-                            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Dela Cruz" required>
+                            <input type="text" class="form-control text-capitalize" name="lastname" id="lastname" placeholder="Dela Cruz" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">First Name</label>
-                            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Pedro" required>
+                            <input type="text" class="form-control text-capitalize" name="firstname" id="firstname" placeholder="Pedro" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Middle Name</label>
-                            <input type="text" class="form-control" name="middlename" id="middlename" placeholder="Dantes">
+                            <input type="text" class="form-control text-capitalize" name="middlename" id="middlename" placeholder="Dantes">
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Email</label>
@@ -94,27 +94,27 @@
                     <div class="row">
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Employee Number</label>
-                            <input type="text" class="form-control" name="empnumber" id="empnumber" placeholder="00212351" required>
+                            <input type="text" class="form-control text-capitalize" name="empnumber" id="empnumber" placeholder="00212351" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Item Number</label>
-                            <input type="text" class="form-control" name="itemnumber" id="itemnumber" placeholder="10023-20351" required>
+                            <input type="text" class="form-control text-capitalize" name="itemnumber" id="itemnumber" placeholder="10023-20351" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">TIN</label>
-                            <input type="text" class="form-control" name="tin" id="tin" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="tin" id="tin" placeholder="" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">PHILHEALTH</label>
-                            <input type="text" class="form-control" name="philhealth" id="philhealth" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="philhealth" id="philhealth" placeholder="" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">PAGIBIG</label>
-                            <input type="text" class="form-control" name="pagibig" id="pagibig" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="pagibig" id="pagibig" placeholder="" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">GSIS</label>
-                            <input type="text" class="form-control" name="gsis" id="gsis" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="gsis" id="gsis" placeholder="" required>
                         </div>
                     </div>
                 </div>
@@ -127,23 +127,23 @@
                     <div class="row">
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Position</label>
-                            <input type="text" class="form-control" name="position" id="position" placeholder="Teacher I" required>
+                            <input type="text" class="form-control text-capitalize" name="position" id="position" placeholder="Teacher I" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Coordinatorship</label>
-                            <input type="text" class="form-control" name="coordinatorship" id="coordinatorship" placeholder="">
+                            <input type="text" class="form-control text-capitalize" name="coordinatorship" id="coordinatorship" placeholder="">
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Advisory Class</label>
-                            <input type="text" class="form-control" name="advisory" id="advisory" placeholder="Grade 7">
+                            <input type="text" class="form-control text-capitalize" name="advisory" id="advisory" placeholder="Grade 7">
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Teaching Loads</label>
-                            <input type="text" class="form-control" name="loads" id="loads" placeholder="3" required>
+                            <input type="text" class="form-control text-capitalize" name="loads" id="loads" placeholder="3" required>
                         </div>
                         <div class="col-md-8 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Subjects Taught</label>
-                            <input type="text" class="form-control" name="subjects" id="subjects" placeholder="Mathematics, Science, etc." required>
+                            <input type="text" class="form-control text-capitalize" name="subjects" id="subjects" placeholder="Mathematics, Science, etc." required>
                         </div>
                     </div>
                 </div>
@@ -168,15 +168,15 @@
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
-                            <input type="text" class="form-control" name="firstbrand" id="firstbrand" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="firstbrand" id="firstbrand" placeholder="" required>
                         </div>
                         <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
-                            <input type="text" class="form-control" name="secondbrand" id="secondbrand" placeholder="" required>
+                            <input type="text" class="form-control text-capitalize" name="secondbrand" id="secondbrand" placeholder="" required>
                         </div>
                          <div class="col-md-4 p-1">
                             <label for="formControlInput" class="form-label fw-bold">Vaccine Brand</label>
-                            <input type="text" class="form-control" name="additionalbrand" id="additionalbrand" placeholder="Optional" required>
+                            <input type="text" class="form-control text-capitalize" name="additionalbrand" id="additionalbrand" placeholder="Optional" required>
                         </div>
                     </div>
                 </div>
@@ -390,8 +390,8 @@
             {data: 'DT_RowIndex', name: 'DT_RowIndex', class:'text-center'},
             {data: 'empnumber', name: 'empnumber'},
             {data: 'itemnumber', name: 'itemnumber'},
-            {data: 'lastname', name: 'lastname'},
-            {data: 'position', name: 'position'},
+            {data: 'lastname', name: 'lastname', class: 'text-capitalize'},
+            {data: 'position', name: 'position', class: 'text-capitalize'},
             {data: 'email', name: 'email'},
             {data: 'action', name: 'action', orderable: false, searchable: false, class:'text-center'},
         ],

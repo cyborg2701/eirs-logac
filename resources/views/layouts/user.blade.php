@@ -96,7 +96,7 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-                <h1 class="badge bg-info fs-5 text-center">Employee Records Information System</h1>
+                <h1 class="badge bg-info fs-5 text-wrap" style="width: auto;">Employee Records Information System</h1>
 
                 <!-- Topbar Search -->
                 {{-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
