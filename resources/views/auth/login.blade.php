@@ -12,7 +12,7 @@
                             <div class="p-5">
                                 <div class="text-center">
                                     
-                                    <h1 class="h5 text-gray-1000 mb-4">{{ __('Employee Information Record System') }}</h1>
+                                    <h1 class="h5 text-gray-1000 mb-4">{{ __('Employee Records Information System') }}</h1>
                                 </div>
 
                                 @if ($errors->any())
