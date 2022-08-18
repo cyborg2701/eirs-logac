@@ -10,7 +10,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Employee Record Information System <br> Logac National High School</title>
+    <title>Employee Records Information System <br> Logac National High School</title>
     @include('layouts.script')
     @include('layouts.css')
 </head>
@@ -96,7 +96,7 @@
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
-                <h1 class="badge bg-info fs-5 text-center">Employee Record Information System</h1>
+                <h1 class="badge bg-info fs-5 text-center">Employee Records Information System</h1>
                 <!-- Topbar Navbar -->
          
 
