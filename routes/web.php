@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 Route::get('home', [HomeController::class, 'index'])->name('user.home')->middleware('is_user');
-Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
+Route::get('admin', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 
 Route::group(['prefix' => 'employees', 'middleware' => ['is_user']], function(){
     Route::get('', [MasterlistController::class, 'index'])->name('employees.index');
