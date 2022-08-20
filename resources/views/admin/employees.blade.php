@@ -38,7 +38,7 @@
   <table class="table table-bordered data-table nowrap" style="width:100%">
     <thead>
         <tr class="table-primary">
-          <td class="text-center">No.dsa</td>
+          <td class="text-center">No.</td>
           <td class="text-center">Employee Number</td>
           <td class="text-center">Item Number</td>
           <td class="text-center">Name</td>

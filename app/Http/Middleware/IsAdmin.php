@@ -19,6 +19,6 @@ class IsAdmin
         if(auth()->user()->is_admin == 1){
             return $next($request);
         }
-        return back()->with(session()->flash('unrestricted', 'Ooops! You do not have access on this page.'));
+        return back()->with(session()->flash('error', 'Ooops! You do not have access on this page.'));
     }
 }

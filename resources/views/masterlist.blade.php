@@ -33,7 +33,7 @@
       
     </div>
 <div class="mt-2">
-  <table class="table table-bordered table-hover data-table" >
+  <table class="table table-bordered data-table nowrap" style="width:100%">
     <thead>
         <tr class="table-primary">
           <td>No.</td>
@@ -384,6 +384,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
+        responsive: true,
         select: true,
         ajax: "{{ route('employees.index') }}",
         columns: [
@@ -406,6 +407,7 @@
       ]
 
     });
+    new $.fn.dataTable.FixedHeader( table );
 
     // SHOW ADD MODAL
    $('#addEmployee').click(function () {
